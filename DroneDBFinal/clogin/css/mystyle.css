@@ -1,0 +1,8 @@
+body 
+{
+background-image: url(_images/bg.png);
+background-repeat: no-repeat;
+background-position: center center;
+background-attachment: fixed;
+background-size: cover;
+}

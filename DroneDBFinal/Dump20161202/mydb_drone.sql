@@ -1,0 +1,61 @@
+-- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
+--
+-- Host: localhost    Database: mydb
+-- ------------------------------------------------------
+-- Server version	5.7.14
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `drone`
+--
+
+DROP TABLE IF EXISTS `drone`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `drone` (
+  `Drone_ID` int(30) NOT NULL,
+  `Accelometer` float DEFAULT NULL,
+  `Gyroscope` float DEFAULT NULL,
+  `Barometer` float DEFAULT NULL,
+  `time_elapsed` float DEFAULT NULL,
+  `Deployment_CentreID` int(11) DEFAULT NULL,
+  `Battery_Capacity` int(11) DEFAULT NULL,
+  `Admin_Admin_ID` int(11) NOT NULL,
+  PRIMARY KEY (`Drone_ID`,`Admin_Admin_ID`),
+  KEY `Deployment_CentreID_idx` (`Deployment_CentreID`),
+  KEY `fk_drone_Admin1_idx` (`Admin_Admin_ID`),
+  CONSTRAINT `fk_Deployment_CentreID` FOREIGN KEY (`Deployment_CentreID`) REFERENCES `deployment centre` (`Deployment_CentreID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_drone_Admin1` FOREIGN KEY (`Admin_Admin_ID`) REFERENCES `admin` (`Admin_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `drone`
+--
+
+LOCK TABLES `drone` WRITE;
+/*!40000 ALTER TABLE `drone` DISABLE KEYS */;
+INSERT INTO `drone` VALUES (1,12,1500.1,1.01,300.1,1,70,1),(2,12,1512.1,1.01,310.1,2,60,1),(3,12,1560.1,1.01,312.1,3,45,1),(4,12,1584.1,1.01,319.1,4,78,1),(5,12,1614.1,1.01,325.1,1,90,1),(6,12,1644.1,1.01,331.1,2,85,1),(7,12,1674.1,1.01,337.1,3,100,1),(8,12,1704.1,1.01,343.1,4,100,1),(9,12,1734.1,1.01,349.1,1,92,1),(10,12,1764.1,1.01,355.1,2,78,1),(11,12,1794.1,1.01,361.1,3,69,1),(12,12,1500.1,1.01,240.1,4,95,1),(13,12,1600.1,1.01,220.1,1,100,1),(14,12,1615.1,1.01,180.1,2,67,1),(15,12,1630.1,1.01,160.1,3,20,1),(16,12,1645.1,1.01,199.1,4,89,1),(17,12,1669.1,1.01,213.1,1,100,1),(18,12,1666.1,1.01,224.1,2,76,1),(19,12,1664.1,1.01,256.1,3,87,1),(20,12,1545.1,1.01,265.1,4,100,1),(21,12,1230.1,1.01,276.1,3,100,1);
+/*!40000 ALTER TABLE `drone` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-12-02 19:45:41
